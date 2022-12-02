@@ -17,7 +17,7 @@ const GhibliProvider = (props) => {
   // the value prop below must be called 'value' and is the one attribute/prop of the Provider. It always takes an object. This is how you pass the data, functions etc to the the context object.
   return (
     <GhibliContext.Provider value={{ data, setData, makeChoice }}>
-      {/* render whatever I put inside the opening and closing of this Provider */}
+      {/* render whatever I put inside the opening and closing of this Provider, in our case this will wrap the whole application. This is actually also how BrowserRouter works, it uses context */}
       {props.children}
     </GhibliContext.Provider>
   );

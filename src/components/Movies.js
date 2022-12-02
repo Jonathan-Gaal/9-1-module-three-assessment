@@ -1,7 +1,9 @@
 import { useState, useContext, useEffect } from 'react';
 import { GhibliContext } from '../context/ghibliContext';
 const Movies = ({ choice }) => {
+  //You are now pulling state and a reusable function from the context which means you only have one data state for every component
   const { data, makeChoice } = useContext(GhibliContext);
+  //it is good practice to keep state that is only used in one component inside that component only
   const [filmInfo, setFilmInfo] = useState([]);
 
   useEffect(() => {

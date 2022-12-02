@@ -2,12 +2,18 @@ import { useState, useContext, useEffect } from 'react';
 import { GhibliContext } from '../context/ghibliContext';
 
 const Locations = ({ choice }) => {
+  //You are now pulling state, the state setter and a reusable function from the context which means you only have one data state for every component
   const { data, setData, makeChoice } = useContext(GhibliContext);
+  //it is good practice to keep state, like below, that is only used in one component inside that component only
   const [show, setShow] = useState(false);
 
+  //This will allow the data to reset again when I hide the location
+  //It will also call the function after the very first render since the initial state for show is false
   useEffect(() => {
-    makeChoice(choice);
-  }, []);
+    if (show === false) {
+      makeChoice(choice);
+    }
+  }, [show]);
 
   const showLocations = () => {
     setShow(!show);

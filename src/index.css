@@ -4,7 +4,6 @@
   text-align: center;
 }
 
-
 nav {
   display: flex;
   justify-content: space-around;
@@ -41,7 +40,7 @@ h2 {
 
 li {
   font-size: 1em;
-  
+  list-style: none;
 }
 
 .locations {
@@ -49,26 +48,29 @@ li {
   padding: 1em;
   min-height: 80vh;
   text-align: center;
-  
-  
 }
 
 .locations > ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-left: 0;
+
+  /* margin-left: 0; */
 }
 
 .locations ul > li {
   background: lemonchiffon;
   width: 26%;
-  padding: 2em;
+  padding: 0.5em 0.3em;
 }
 
 .locations ul > li > ul {
   margin-left: 0;
   list-style: none;
+  margin: 20px 10px;
+
+  background: ghostwhite;
+  /* background: lemonchiffon; */
 }
 
 .locations ul > li > ul li {
@@ -77,11 +79,12 @@ li {
   flex-wrap: no-wrap;
   width: 90%;
   justify-content: center;
+  margin-bottom: 5px;
 }
 
 .locations ul > li > ul li span {
   text-align: center;
- 
+
   display: inline-block;
   width: 100%;
 }
@@ -123,7 +126,6 @@ li {
   height: 80vh;
   background: #d7f0f2;
   text-align: center;
-  
 }
 
 .movies aside {

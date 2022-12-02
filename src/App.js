@@ -8,12 +8,14 @@ import GhibliProvider from './context/ghibliContext';
 
 const App = () => {
   return (
+    // Wrap my whole application with my Ghibli Context
     <GhibliProvider>
+      /* Beleive it or not, Browser Router uses context */
       <Router>
         <div className="app">
           <Nav />
         </div>
-
+        {/* passing the choice prop in each route so that I can use in the fetch call */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/people" element={<People choice="people" />} />
