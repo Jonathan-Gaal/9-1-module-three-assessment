@@ -10,15 +10,7 @@ const People = ({ choice }) => {
 
   useEffect(() => {
     makeChoice(choice);
-  }, [choice, makeChoice]);
-  // useEffect(() => {
-  //   fetch('people.json')
-  //     .then((res) => res.json())
-  //     .then((resJson) => setData(resJson || []))
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }, []);
+  }, []);
 
   const handleInput = (e) => {
     setInputBox(e.target.value);

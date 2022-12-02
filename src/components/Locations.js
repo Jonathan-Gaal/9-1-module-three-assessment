@@ -2,22 +2,12 @@ import { useState, useContext, useEffect } from 'react';
 import { GhibliContext } from '../context/ghibliContext';
 
 const Locations = ({ choice }) => {
-  // const [data, setData] = useState([]);
-
   const { data, setData, makeChoice } = useContext(GhibliContext);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     makeChoice(choice);
-  }, [choice, makeChoice]);
-  // useEffect(() => {
-  //   fetch("../locations.json")
-  //     .then((res) => res.json())
-  //     .then((resJson) => setData(resJson || []))
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }, []);
+  }, []);
 
   const showLocations = () => {
     setShow(!show);
