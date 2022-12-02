@@ -1,19 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState, useContext, useEffect } from 'react';
+import { GhibliContext } from '../context/ghibliContext';
 
-const People = () => {
-  const [data, setData] = useState([]);
+const People = ({ choice }) => {
+  // const [data, setData] = useState([]);
+  const { data, makeChoice } = useContext(GhibliContext);
   const [personInfo, setPersonInfo] = useState([]);
-  const [inputBox, setInputBox] = useState("");
-  const [message, setMessage] = useState("");
+  const [inputBox, setInputBox] = useState('');
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetch("../people.json")
-      .then((res) => res.json())
-      .then((resJson) => setData(resJson || []))
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+    makeChoice(choice);
+  }, [choice, makeChoice]);
+  // useEffect(() => {
+  //   fetch('people.json')
+  //     .then((res) => res.json())
+  //     .then((resJson) => setData(resJson || []))
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }, []);
 
   const handleInput = (e) => {
     setInputBox(e.target.value);
@@ -24,20 +29,20 @@ const People = () => {
     setPersonInfo([]);
 
     if (inputBox.length === 0) {
-      setMessage("You must enter a name to search, please try again...");
+      return setMessage('You must enter a name to search, please try again...');
     }
 
     if (inputBox.length > 0) {
-      data?.find((person) => {
+      return data?.find((person) => {
         if (person.name.toLowerCase() === inputBox.toLowerCase()) {
-          setPersonInfo(person || []);
+          return setPersonInfo(person || []);
         } else {
-          setMessage("Sorry, no match found, please try again...");
+          return setMessage('Sorry, no match found, please try again...');
         }
       });
     }
 
-    setInputBox("");
+    setInputBox('');
   };
 
   return (

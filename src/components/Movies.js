@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
-const Movies = () => {
-  const [data, setData] = useState([]);
+import { useState, useContext, useEffect } from 'react';
+import { GhibliContext } from '../context/ghibliContext';
+const Movies = ({ choice }) => {
+  const { data, makeChoice } = useContext(GhibliContext);
+  // const [data, setData] = useState([]);
   const [filmInfo, setFilmInfo] = useState([]);
 
+  // useEffect(() => {
+  //   fetch('films.json')
+  //     .then((res) => res.json())
+  //     .then((resJson) => setData(resJson || []))
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }, []);
   useEffect(() => {
-    fetch("../films.json")
-      .then((res) => res.json())
-      .then((resJson) => setData(resJson || []))
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+    makeChoice(choice);
+  }, [choice, makeChoice]);
 
   const handleChange = (e) => {
     const choice = e.target.value;

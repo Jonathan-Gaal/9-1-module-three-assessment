@@ -1,16 +1,23 @@
-import { useEffect, useState } from "react";
-const Locations = () => {
-  const [data, setData] = useState([]);
+import { useState, useContext, useEffect } from 'react';
+import { GhibliContext } from '../context/ghibliContext';
+
+const Locations = ({ choice }) => {
+  // const [data, setData] = useState([]);
+
+  const { data, setData, makeChoice } = useContext(GhibliContext);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    fetch("../locations.json")
-      .then((res) => res.json())
-      .then((resJson) => setData(resJson || []))
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+    makeChoice(choice);
+  }, [choice, makeChoice]);
+  // useEffect(() => {
+  //   fetch("../locations.json")
+  //     .then((res) => res.json())
+  //     .then((resJson) => setData(resJson || []))
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }, []);
 
   const showLocations = () => {
     setShow(!show);
@@ -30,11 +37,11 @@ const Locations = () => {
     <div className="locations">
       <h1>List of Locations</h1>
       <button onClick={showLocations}>
-        {!show ? "Show Locations" : "Hide Locations"}
+        {!show ? 'Show Locations' : 'Hide Locations'}
       </button>
       {show ? (
         <>
-          {" "}
+          {' '}
           <button value="name" onClick={handleClick}>
             Sort Locations by Name
           </button>
